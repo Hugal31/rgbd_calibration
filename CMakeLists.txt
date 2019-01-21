@@ -5,14 +5,14 @@ set(CMAKE_BUILD_TYPE RelWithDebInfo)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS cmake_modules roscpp calibration_common geometry_msgs kinect
+find_package(catkin REQUIRED COMPONENTS roscpp calibration_common geometry_msgs kinect
                                         eigen_conversions camera_info_manager cv_bridge pcl_ros
                                         image_transport)# swissranger_camera)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 find_package(Boost REQUIRED)
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(PCL 1.7 REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(OpenMP REQUIRED)
@@ -58,7 +58,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES interactive_checkerboard_finder rgbd_calibration
+  LIBRARIES rgbd_calibration
   CATKIN_DEPENDS roscpp calibration_common geometry_msgs kinect
                  eigen_conversions camera_info_manager cv_bridge pcl_ros image_transport
   DEPENDS eigen pcl opencv2
