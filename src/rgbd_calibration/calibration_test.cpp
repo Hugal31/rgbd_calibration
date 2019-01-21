@@ -664,7 +664,7 @@ public:
 
     typename Types<T>::Cloud3 cb_corners(checkerboard_->corners().size());
     cb_corners.container() = checkerboard_pose_eigen * checkerboard_->corners().container().cast<T>();
-    typename Types<T>::Cloud2 reprojected_corners = camera_model_->project3dToPixel<T>(cb_corners);
+    typename Types<T>::Cloud2 reprojected_corners = camera_model_->project3dToPixel2<T>(cb_corners);
 
     for (Size1 i = 0; i < cb_corners.elements(); ++i)
     {
@@ -1081,7 +1081,7 @@ void CalibrationTest::testCube() const
 
       if (found)
       {
-        cv::vector<cv::Point> points;
+        std::vector<cv::Point> points;
         /*points.push_back(cv::Point(corners[0].x(), corners[0].y()));
         points.push_back(cv::Point(corners[3].x(), corners[3].y()));
         points.push_back(cv::Point(corners[15].x(), corners[15].y()));
@@ -1113,7 +1113,7 @@ void CalibrationTest::testCube() const
 
         if (found)
         {
-          cv::vector<cv::Point> points;
+          std::vector<cv::Point> points;
 
           points.push_back(cv::Point(tmp_corners[0].x(), tmp_corners[0].y()));
           points.push_back(cv::Point(tmp_corners[5].x(), tmp_corners[5].y()));

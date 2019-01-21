@@ -477,7 +477,7 @@ void TestNode::spin3 ()
           point_eigen.z() = z;
 
           point_eigen_original = t_original * point_eigen;
-          Point2 point_image_original = color_sensor_->cameraModel()->project3dToPixel(point_eigen_original);
+          Point2 point_image_original = color_sensor_->cameraModel()->project3dToPixel2<Scalar>(point_eigen_original);
 
           uint16_t new_z_original = cv::saturate_cast<uint16_t>(cvRound(point_eigen_original.z() * 1000));
           int x = cvRound(point_image_original[0]);
@@ -495,7 +495,7 @@ void TestNode::spin3 ()
           point_eigen.z() = z;
 
           point_eigen = t * point_eigen;
-          Point2 point_image = color_sensor_->cameraModel()->project3dToPixel(point_eigen);
+          Point2 point_image = color_sensor_->cameraModel()->project3dToPixel2<Scalar>(point_eigen);
 
           uint16_t new_z = cv::saturate_cast<uint16_t>(cvRound(point_eigen.z() * 1000));
           x = cvRound(point_image[0]);
