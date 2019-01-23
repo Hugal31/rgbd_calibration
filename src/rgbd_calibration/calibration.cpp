@@ -682,7 +682,7 @@ Calibration::optimizeAll (const std::vector<CheckerboardViews::Ptr> & cb_views_v
 									     global_model_->imageSize());
 
     cost_function = new TransformDistortionCostFunction(error,
-    		                                            ceres::DO_NOT_TAKE_OWNERSHIP,
+    		                                            ceres::TAKE_OWNERSHIP,
 														3 * cb_views.depthView()->points().size());
 
     problem.AddResidualBlock(cost_function,
@@ -698,7 +698,7 @@ Calibration::optimizeAll (const std::vector<CheckerboardViews::Ptr> & cb_views_v
                                                            cb_views.checkerboard(),
                                                            cb_views.colorView()->points());
     ceres::CostFunction * repr_cost_function = new ReprojectionCostFunction(repr_error,
-                                                                            ceres::DO_NOT_TAKE_OWNERSHIP,
+                                                                            ceres::TAKE_OWNERSHIP,
                                                                             2 * cb_views.checkerboard()->size());
 
     problem.AddResidualBlock(repr_cost_function,
