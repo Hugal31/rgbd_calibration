@@ -96,6 +96,8 @@ protected:
 
   int downsample_ratio_;
 
+  Size1 max_threads_;
+
   Size2 undistortion_matrix_cell_size_;
   Size2 images_size_;
 

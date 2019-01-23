@@ -418,7 +418,7 @@ void Calibration::optimizeTransform(const std::vector<CheckerboardViews::Ptr> & 
   options.linear_solver_type = ceres::SPARSE_SCHUR;
   options.max_num_iterations = 100;
   options.minimizer_progress_to_stdout = true;
-  options.num_threads = 8;
+  options.num_threads = max_threads_;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
@@ -715,7 +715,7 @@ Calibration::optimizeAll (const std::vector<CheckerboardViews::Ptr> & cb_views_v
   options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
   options.max_num_iterations = 20;
   options.minimizer_progress_to_stdout = true;
-  options.num_threads = 8;
+  options.num_threads = max_threads_;
 
 //  problem.SetParameterBlockConstant(delta);
 

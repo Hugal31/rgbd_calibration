@@ -48,6 +48,12 @@ public:
   typedef boost::shared_ptr<Calibration> Ptr;
   typedef boost::shared_ptr<const Calibration> ConstPtr;
 
+  Calibration()
+    : max_threads_ (8)
+  {
+
+  }
+
   inline void
   setColorSensor (const PinholeSensor::Ptr & color_sensor)
   {
@@ -91,6 +97,11 @@ public:
     ratio_ = ratio;
   }
 
+  inline void setMaxThreads(Size1 max_threads)
+  {
+    max_threads_ = max_threads;
+  }
+
   void
   addData (const cv::Mat & image,
            const PCLCloud3::ConstPtr & cloud);
@@ -116,7 +127,7 @@ public:
     //depth_undistortion_estimation_->setDepthErrorFunction(Polynomial<Scalar, 2, 0>(Vector3(0.000, 0.000, 0.0035)));
     depth_undistortion_estimation_->setLocalModel(local_model_);
     depth_undistortion_estimation_->setGlobalModel(global_model_);
-    depth_undistortion_estimation_->setMaxThreads(8);
+    depth_undistortion_estimation_->setMaxThreads(max_threads_);
   }
 
   inline void
@@ -189,6 +200,7 @@ protected:
   bool estimate_depth_und_model_;
   bool estimate_initial_trasform_;
   int ratio_;
+  Size1 max_threads_;
 
   LocalModel::Ptr local_model_;
   GlobalModel::Ptr global_model_;
