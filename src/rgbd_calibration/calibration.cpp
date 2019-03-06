@@ -290,7 +290,7 @@ Calibration::estimateInitialTransform ()
   {
     Size1 index = rand() % data_vec_.size();
     cb_extractor.setInputData(data_vec_[index]);
-    cb_extractor.extract(cb_views_vec, true);
+    cb_extractor.extract(cb_views_vec, interactive_);
   }
 
   estimateTransform(cb_views_vec);

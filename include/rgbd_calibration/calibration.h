@@ -50,6 +50,7 @@ public:
 
   Calibration()
     : max_threads_ (8)
+    , interactive_ (false)
   {
 
   }
@@ -100,6 +101,11 @@ public:
   inline void setMaxThreads(Size1 max_threads)
   {
     max_threads_ = max_threads;
+  }
+
+  inline void setInteractive(bool interactive)
+  {
+    interactive_ = interactive;
   }
 
   void
@@ -201,6 +207,7 @@ protected:
   bool estimate_initial_trasform_;
   int ratio_;
   Size1 max_threads_;
+  bool interactive_;
 
   LocalModel::Ptr local_model_;
   GlobalModel::Ptr global_model_;

@@ -25,6 +25,7 @@ CalibrationNode::CalibrationNode (ros::NodeHandle & node_handle)
   checkerboards_sub_ = node_handle_.subscribe("checkerboard_array", 1, &CalibrationNode::checkerboardArrayCallback, this);
 
   max_threads_ = node_handle_.param("max_threads", 8);
+  interactive_ = node_handle_.param("interactive", false);
 
   if (not node_handle_.getParam("camera_calib_url", camera_calib_url_))
     ROS_FATAL("Missing \"camera_calib_url\" parameter!!");
@@ -152,6 +153,7 @@ CalibrationNode::initialize ()
   calibration_->setPublisher(publisher_);
   calibration_->setDownSampleRatio(downsample_ratio_);
   calibration_->setMaxThreads(max_threads_);
+  calibration_->setInteractive(interactive_);
 
   return true;
 }
