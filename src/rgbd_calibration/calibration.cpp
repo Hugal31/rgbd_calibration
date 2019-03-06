@@ -282,7 +282,7 @@ Calibration::estimateInitialTransform ()
 {
   CheckerboardViewsExtraction cb_extractor;
   cb_extractor.setCheckerboardVector(cb_vec_);
-  cb_extractor.setCheckerboardConstraint(boost::make_shared<CheckerboardDistanceConstraint>(2.0));
+  cb_extractor.setCheckerboardConstraint(boost::make_shared<CheckerboardDistanceConstraint>(2.5));
 
   std::vector<CheckerboardViews::Ptr> cb_views_vec;
 
