@@ -97,17 +97,20 @@ public:
   }
 
   Size1 extract(std::vector<CheckerboardViews::Ptr> & cb_views_vec,
-                bool interactive = false) const;
+                bool interactive = false,
+                bool assumeAllOnPlane = false) const;
 
   Size1 extractAll(std::vector<CheckerboardViews::Ptr> & cb_views_vec,
-                   bool interactive = false) const;
+                   bool interactive = false,
+                   bool assumeAllOnPlane = false) const;
 
 private:
 
   Size1 extract(const RGBDData::ConstPtr & data,
                 std::vector<CheckerboardViews::Ptr> & cb_views_vec,
                 bool interactive,
-                bool force) const;
+                bool force,
+                bool assumeAllOnPlane = false) const;
 
   std::vector<Checkerboard::ConstPtr> cb_vec_;
 

@@ -51,6 +51,7 @@ public:
   Calibration()
     : max_threads_ (8)
     , interactive_ (false)
+    , assumeAllOnPlan_ (false)
   {
 
   }
@@ -106,6 +107,11 @@ public:
   inline void setInteractive(bool interactive)
   {
     interactive_ = interactive;
+  }
+
+  inline void setAssumeAllOnPlan(bool allOnPlan)
+  {
+    assumeAllOnPlan_ = allOnPlan;
   }
 
   void
@@ -208,6 +214,7 @@ protected:
   int ratio_;
   Size1 max_threads_;
   bool interactive_;
+  bool assumeAllOnPlan_;
 
   LocalModel::Ptr local_model_;
   GlobalModel::Ptr global_model_;

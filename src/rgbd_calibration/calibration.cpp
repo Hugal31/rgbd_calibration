@@ -199,7 +199,7 @@ Calibration::perform ()
     cb_extractor.setCheckerboardVector(cb_vec_);
     cb_extractor.setInputData(data_vec_);
     cb_extractor.setOnlyImages(true);
-    cb_extractor.extractAll(cb_views_vec_);
+    cb_extractor.extractAll(cb_views_vec_, interactive_, assumeAllOnPlan_);
 
     ROS_INFO_STREAM(cb_views_vec_.size());
 
@@ -290,7 +290,7 @@ Calibration::estimateInitialTransform ()
   {
     Size1 index = rand() % data_vec_.size();
     cb_extractor.setInputData(data_vec_[index]);
-    cb_extractor.extract(cb_views_vec, interactive_);
+    cb_extractor.extract(cb_views_vec, interactive_, assumeAllOnPlan_);
   }
 
   estimateTransform(cb_views_vec);

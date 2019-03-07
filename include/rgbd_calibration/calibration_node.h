@@ -98,6 +98,7 @@ protected:
 
   Size1 max_threads_;
   bool interactive_;
+  bool assume_all_on_plan_;
 
   Size2 undistortion_matrix_cell_size_;
   Size2 images_size_;

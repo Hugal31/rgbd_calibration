@@ -5,6 +5,9 @@
 
 <group ns="$(arg ns)">
 
+    <arg name="interactive" default="true" />
+    <arg name="assume_all_on_plan" default="false" doc="Assume every depth point captured is on the same plan"/>
+
     <arg name="path"                  default="$(env HOME)/Desktop/dataset/kinect1/" />
     <arg name="instances"             default="1000" />
     <arg name="image_extension"       default="png" />

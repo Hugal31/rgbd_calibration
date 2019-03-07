@@ -26,6 +26,7 @@ CalibrationNode::CalibrationNode (ros::NodeHandle & node_handle)
 
   max_threads_ = node_handle_.param("max_threads", 8);
   interactive_ = node_handle_.param("interactive", false);
+  assume_all_on_plan_ = node_handle_.param("assume_all_on_plan", false);
 
   if (not node_handle_.getParam("camera_calib_url", camera_calib_url_))
     ROS_FATAL("Missing \"camera_calib_url\" parameter!!");
@@ -154,6 +155,7 @@ CalibrationNode::initialize ()
   calibration_->setDownSampleRatio(downsample_ratio_);
   calibration_->setMaxThreads(max_threads_);
   calibration_->setInteractive(interactive_);
+  calibration_->setAssumeAllOnPlan(assume_all_on_plan_);
 
   return true;
 }
