@@ -237,7 +237,7 @@ bool TestNode::waitForMessages() const
     rate.sleep();
     ros::spinOnce();
   }
-  return checkerboard_array_msg_;
+  return static_cast<bool>(checkerboard_array_msg_);
 }
 
 Checkerboard::Ptr TestNode::createCheckerboard(const CheckerboardMsg::ConstPtr & msg,
